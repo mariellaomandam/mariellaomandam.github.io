@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e9b8b9">
+  <title>Mariella</title>
+
+  <style>
+    :root {
+      --pink: #e9b8b9;
+      --black: #171313;
+      --text: #211819;
+      --muted: #d8d8d8;
+      --font: Inter, "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--pink);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app {
+      position: relative;
+      min-height: 100vh;
+      padding: 76px 7.6vw 72px;
+      overflow: hidden;
+      background: var(--pink);
+    }
+
+    .ambient {
+      position: absolute;
+      width: 390px;
+      height: 390px;
+      top: -190px;
+      right: -115px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.23),
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Profile section */
+
+    .profile {
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 62px;
+    }
+
+    .avatar {
+      width: 128px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--muted);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+    }
+
+    .identity {
+      min-width: 0;
+    }
+
+    .name-line {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(29px, 3.1vw, 38px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      font-weight: 750;
+    }
+
+    .blog-link {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 80px;
+      min-height: 34px;
+      padding: 8px 19px;
+      border: 1px solid var(--black);
+      border-radius: 999px;
+      background: var(--black);
+      color: #fff;
+      font: 650 12px/1 var(--font);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition:
+        transform 0.18s ease,
+        background-color 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .blog-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px rgba(35, 17, 18, 0.16);
+      background: #342929;
+    }
+
+    .blog-link:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 4px;
+    }
+
+    .blog-link:active {
+      transform: translateY(0);
+    }
+
+    .degree,
+    .education {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      letter-spacing: -0.1px;
+    }
+
+    .education {
+      color: rgba(33, 24, 25, 0.82);
+    }
+
+    /* Skills and languages */
+
+    .details {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(180px, 0.85fr);
+      gap: clamp(42px, 9vw, 124px);
+      align-items: start;
+    }
+
+    .section {
+      min-width: 0;
+    }
+
+    .section h2 {
+      font-size: 13px;
+      font-weight: 750;
+      line-height: 1.3;
+      margin: 0 0 19px;
+      letter-spacing: -0.1px;
+    }
+
+    .items {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .items li {
+      font-size: 14px;
+      line-height: 1.45;
+      color: rgba(33, 24, 25, 0.92);
+    }
+
+    /* Mobile layout */
+
+    @media (max-width: 600px) {
+      .app {
+        padding: 46px 7vw 56px;
+      }
+
+      .profile {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 18px;
+        margin-bottom: 48px;
+      }
+
+      .avatar {
+        width: 82px;
+      }
+
+      h1 {
+        font-size: 27px;
+        letter-spacing: -1px;
+      }
+
+      .name-line {
+        gap: 10px;
+      }
+
+      .blog-link {
+        min-height: 31px;
+        min-width: 70px;
+        padding: 7px 14px;
+        font-size: 11px;
+      }
+
+      .degree,
+      .education {
+        font-size: 12px;
+      }
+
+      .details {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .section h2 {
+        margin-bottom: 14px;
+      }
+
+      .items {
+        gap: 10px;
+      }
+
+      .items li {
+        font-size: 13px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <div class="ambient" aria-hidden="true"></div>
+
+    <div class="page">
+
+      <header class="profile">
+        <img class="avatar" src="assets/image.jpg" alt="Mariella's profile photo"/>
+
+        <div class="identity">
+          <div class="name-line">
+            <h1>Mariella P.</h1>
+            <a
+              class="blog-link"
+              href="https://sites.google.com/view/okeii/welcome"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open blog in a new tab"
+            >
+              Blogs
+            </a>
+          </div>
+
+          <p class="degree">
+            Bachelor of Science in Computer Science
+          </p>
+
+          <p class="education">
+            University of the Immaculate Conception 2023 - present
+          </p>
+        </div>
+      </header>
+
+      <div class="details">
+
+        <section class="section" aria-labelledby="skills-heading">
+          <h2 id="skills-heading">Skills and Training</h2>
+
+          <ul class="items">
+            <li>British Sign Language (ongoing)</li>
+            <li>
+              Electrical Installation and Maintenance - TESDA (ongoing)
+            </li>
+            <li>
+              Computational Fluid Mechanics - Airflow Around a Spoiler
+            </li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="languages-heading">
+          <h2 id="languages-heading">Languages</h2>
+
+          <ul class="items">
+            <li>Filipino - Native</li>
+            <li>English - Fluent</li>
+            <li>Thai - Conversational</li>
+            <li>Python - Beginner</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>
